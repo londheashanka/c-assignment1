@@ -1,0 +1,67 @@
+using System;
+namespace OopAssignment2
+{
+    internal class Employee
+    {
+        
+        private int EmpNo;
+        private string EmpName;
+        private double Salary, HRA, TA, DA, PF, TDS, NetSalary, GrossSalary;
+        public Employee(int Enum, string Ename, double sal)
+        {
+            EmpNo = Enum;
+            EmpName = Ename;
+            Salary = sal;
+
+            if (Salary < 5000)
+            {
+                HRA = Salary * 10 / 100;
+                TA = Salary * 5 / 100;
+                DA = Salary * 15 / 100;
+                GrossSalary = Salary + HRA + TA + DA;
+            }
+            else if (Salary < 1000)
+            {
+                HRA = Salary * 15 / 100;
+                TA = Salary * 10 / 100;
+                DA = Salary * 20 / 100;
+                GrossSalary = Salary + HRA + TA + DA;
+            }
+            else if (Salary < 15000)
+            {
+                HRA = Salary * 20 / 100;
+                TA = Salary * 15 / 100;
+                DA = Salary * 25 / 100;
+                GrossSalary = Salary + HRA + TA + DA;
+            }
+            else if (Salary < 20000)
+            {
+                HRA = Salary * 25 / 100;
+                TA = Salary * 20 / 100;
+                DA = Salary * 30 / 100;
+                GrossSalary = Salary + HRA + TA + DA;
+            }
+            else if (Salary >= 20000)
+            {
+                HRA = Salary * 30 / 100;
+                TA = Salary * 25 / 100;
+                DA = Salary * 35 / 100;
+                GrossSalary = Salary + HRA + TA + DA;
+            }
+        }
+        public void CalculateSalary()
+        {
+            PF = GrossSalary * 10 / 100;
+            TDS = GrossSalary * 18 / 100;
+            NetSalary = GrossSalary - (PF + TDS);
+        }
+        static void Main(string[] args)
+        {
+            Employee e = new Employee(6, "Divya", 5000);
+            e.CalculateSalary();
+            Console.WriteLine(e.GrossSalary);
+            Console.WriteLine(e.NetSalary);
+            Console.ReadKey();
+        }
+    }
+}
