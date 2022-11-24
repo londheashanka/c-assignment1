@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment3
+{
+    class Employee
+    {
+        public int EmpNo;
+        public string EmpName;
+        public double Salary = 30000;
+        public double km;
+        public void getdetails()
+        {
+            Console.WriteLine("Enter Employee ID : ");
+            EmpNo = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter your name : ");
+            EmpName = Console.ReadLine();
+        }
+        public void getkmdetails()
+        {
+            Console.WriteLine("Enter the no of kilometer : ");
+            km = Convert.ToDouble(Console.ReadLine());
+        }
+        public void Display()
+        {
+            Console.WriteLine("Employee No is : " + EmpNo);
+            Console.WriteLine("Employee name is : " + EmpName);
+        }
+        public void calculateSalary()
+        {
+            Console.WriteLine("Salary is : " + Salary);
+        }
+    }
+    class Manager : Employee
+    {
+        public void getempdetails()
+        {
+            getdetails();
+            base.Display();
+            base.calculateSalary();
+        }
+        public void calculateSalary()
+        {
+            double NetSalary;
+            double GrossSalary;
+            GrossSalary = base.Salary + (base.Salary * 0.08) + (base.Salary * 0.13) + (base.Salary * 0.03);
+            Console.WriteLine("Gross Salary is : " + GrossSalary);
+            NetSalary=GrossSalary-500;
+            Console.WriteLine("Net Salary is : " + NetSalary);
+        }
+    }
+    class MarketingExecutive: Employee
+    {
+        public void getempdetails()
+        {
+            base.getdetails();
+            base.getkmdetails();
+            base.Display();
+            base.calculateSalary();
+        }
+        public void calculateSalary()
+        {
+            double NetSalary;
+            double GrossSalary;
+            GrossSalary = base.Salary + (base.km / 5) + 1000;
+            Console.Write("Gross Salary is : " + GrossSalary);
+            NetSalary = GrossSalary - 500;
+            Console.WriteLine("Net Salary is : " + NetSalary);
+            
+        }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Manager m = new Manager();
+            m.getempdetails();
+            m.calculateSalary();
+            MarketingExecutive me = new MarketingExecutive();
+            me.getempdetails();
+            me.calculateSalary();
+            Console.ReadKey();
+        }
+    }
+}
+
+       
