@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace Assignment5
+{
+    internal class Employee
+    {
+        public int Empid
+        {
+            get;
+            set;
+        }
+        public string Firstname
+        {
+            get;
+            set;
+        }
+        public string Lastname
+        {
+            get;
+            set;
+        }
+        public Employee(int eid,string fname,string lname)
+        {
+            this.Empid = eid;
+            this.Firstname = fname;
+            this.Lastname = lname;
+        }
+        
+    }
+    internal class Program
+    {
+        public static void Main(String[] args)
+        {
+            ArrayList arlist = new ArrayList();
+            Employee e1 = new Employee(101, "Divya","Jadhav");
+            Employee e2 = new Employee(102, "Ram","Mishra");
+            Employee e3 = new Employee(103, "Siya","Patil");
+            arlist.Add(e1);
+            arlist.Add(e2);
+            arlist.Add(e3);
+            foreach (Employee i in arlist)
+            {
+                Console.WriteLine(i.Empid + " " + i.Firstname + " " + i.Lastname);
+            }
+            Console.ReadKey();
+            
+            
+        }
+    }
+}
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+D
