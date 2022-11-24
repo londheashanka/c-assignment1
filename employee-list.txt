@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment5
+{
+    internal class Emplist
+    {
+        public int Empid { get; set; }
+        public string Empname { get; set; }
+        public double Salary { get; set; }
+        public Emplist(int eid, string ename, double sal)
+        {
+            this.Empid = eid;
+            this.Empname = ename;
+            this.Salary = sal;
+        }
+
+        public Emplist()
+        {
+        }
+
+        public static void Main(string[] args)
+        {
+            List<Emplist> employees = new List<Emplist>();
+            int choice = 0;
+
+            while (choice != 5)
+            {
+                Console.WriteLine("1. Add a new employee");
+                Console.WriteLine("2. Display all employees");
+                Console.WriteLine("3. Search a employee");
+                Console.Write("Your choice: ");
+                choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        {
+                            Emplist newEmplist = new Emplist();
+                            Console.Write("Enter the Employee Id: ");
+                            newEmplist.Empid = int.Parse(Console.ReadLine());
+                            Console.Write("Enter the Employee Name: ");
+                            newEmplist.Empname = Console.ReadLine();
+                            Console.Write("Enter the Employee Basic Salary: ");
+                            newEmplist.Salary = double.Parse(Console.ReadLine());
+                            employees.Add(newEmplist);
+                        }
+                        break;
+                    case 2:
+                        {
+                            Console.WriteLine("All employees");
+                            Console.WriteLine(string.Format("Empid", "Empname", "Salary"));
+                            foreach (Emplist e in employees)
+                            {
+                                Console.WriteLine(e.Empid + " " + e.Empname + " " + e.Salary);
+                            }
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Wrong menu item. Try again.");
+                        break;
+
+
+
+                }
+            }
+        }
+    }
+}
