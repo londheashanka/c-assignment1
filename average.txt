@@ -1,0 +1,25 @@
+using System;
+
+class Average
+{
+    public static void Main()
+    {
+        int[] Mark = { 3,5,1,6,2 };
+        
+        int i=0;
+        int sum = 0;
+        float average = 0,highest=0;
+        
+        for (i = 0; i < Mark.Length; i++)
+        {
+            sum += Mark[i]; 
+                 if (Mark[i] > highest) 
+                         highest = Mark[i]; 
+        }
+
+        average = (float)sum / Mark.Length;
+        
+        Console.WriteLine("Average of Array elements: "+ average);
+        Console.WriteLine("Highest of Array elements: "+ highest);
+    }
+}
